@@ -30,9 +30,9 @@ export default function Home() {
             <Header />
             <QR />
             {/* Check if weatherData.main is defined before accessing temp */}
-            <Weather weatherData={weatherData.main?.temp} />
+            <Weather weatherData={weatherData.main?.temp} weatherDescription={weatherData.weather[0]?.description} weatherIcon={weatherData.weather[0]?.icon} cityName={weatherData.name} />
         </div>
     );
 }
 
-// Jag ska vara ärlig. Frågade botten, hållt på hela dagen
+// Jag ska vara ärlig. Frågade botten, hållt på hela dagen. Den ända riktiga skillnaden var frågetecknena
