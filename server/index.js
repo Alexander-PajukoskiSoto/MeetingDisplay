@@ -26,7 +26,7 @@ app.use(bodyParser.json())
 
 app.use(express.static(path.resolve(__dirname,'../client/build')));
 
-console.log('express listening')
+console.log('express listening to server')
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=59.2293827&lon=17.9748815&units=metric&appid=cfdeb26907457c26a1360e06821fc8b8`)
 //converts to json
@@ -36,10 +36,15 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=59.2293827&lon=17.974
 let currentWeather = '';
 function weatherFuncion(data){
     currentWeather = data;
-    console.log(currentWeather);
 }
-app.get('/api',(req,res)=>{
-    res.json('hello, running')
+app.get('/api',async(req,res)=>{
+    try {
+        let meetings = await prisma.Meetings.findMany()
+        res.json(meetings)
+        } catch (error) {
+            console.log(error)
+        }
+    
 })
 app.get('/weatherApiTemp', async (req, res) => {
     try {
@@ -51,7 +56,6 @@ app.get('/weatherApiTemp', async (req, res) => {
   });
 
 app.post('/login', async(req,res)=>{
-    console.log(req.body.name)
     try {
         let adminUser = await prisma.AdminUser.findFirst({
             where:{
@@ -61,7 +65,6 @@ app.post('/login', async(req,res)=>{
         console.log(adminUser);
         if(adminUser.password == req.body.password){
             req.session.authenticated = "true";
-            console.log(req.session);
             res.redirect('/admin');
         }
         else(
@@ -72,10 +75,10 @@ app.post('/login', async(req,res)=>{
             res.redirect('/login')
         }
 })
-
 app.post('/createTime',async(req,res)=>{
     try {
         console.log(req)
+        
         if(req.body.startDate <= req.body.endDate){
             const meeting = await prisma.Meetings.create({
                 data:{
@@ -91,7 +94,7 @@ app.post('/createTime',async(req,res)=>{
         }
     } catch (error) {
         console.log(error,'error')
-        res.redirect('/admin')
+        res.redirect('/login')
     }
 })
 app.listen(PORT, () => {
