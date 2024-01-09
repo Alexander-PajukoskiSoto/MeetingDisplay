@@ -106,3 +106,10 @@ p, label{
 .adminForm :nth-last-child(1){
   width: 20%;
 }
+#reserved{
+  width: 20px;
+  display: inline;
+}
+#reservedLable{
+  display: inline;
+}

@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path='/meeting' element={<Meeting />} />
+        <Route path='/meeting' element={<Meeting meetingData={data}/>} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/login' element={<Login />} />
         <Route path='*' element={<HomePage />} />

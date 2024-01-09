@@ -71,8 +71,26 @@ app.post('/login', async(req,res)=>{
             console.log(error)
             res.redirect('/login')
         }
-    
-    
+})
+
+app.post('/createTime',async(req,res)=>{
+    try {
+        console.log(req)
+        if(req.body.startDate <= req.body.endDate){
+            const meeting = await prisma.Meetings.create({
+                data:{
+                  startDate: req.body.startDate,
+                  endDate: req.body.endDate,
+                  participators: req.body.participants,
+                  title: req.body.title,
+                  content: req.body.description,
+                  reserved: req.body.reserved == 'on'? 'true' : 'false'
+                }
+              })
+        }
+    } catch (error) {
+        console.log(error,'error')
+    }
 })
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

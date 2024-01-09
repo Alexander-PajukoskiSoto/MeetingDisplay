@@ -6,7 +6,7 @@ export default function Home(){
     return(
         <div>
             <Header />
-            <h1>Meeting Page!</h1>
+            <h1>All the meetings</h1>
         </div>
     )
 }

@@ -17,9 +17,10 @@ model AdminUser{
 
 model Meetings {
   id        Int      @id @default(autoincrement())
-  startDate DateTime 
-  endDate DateTime 
+  startDate String 
+  endDate String 
   title     String   @db.VarChar(255)
   content   String?
   participators    String @db.VarChar(255)
+  reserved String @default("false")
 }
