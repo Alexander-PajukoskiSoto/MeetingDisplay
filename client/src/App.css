@@ -5,7 +5,7 @@
 body{
   background-color: rgb(108, 143, 247);
 }
-p{
+p, label{
   color: white;
 }
 .homeContainer{
@@ -81,4 +81,28 @@ p{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* Admin */
+
+.adminForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.adminForm>*{
+  width: 50%;
+  border: none;
+  border-radius: 20px;
+  padding: 5px;
+}
+.adminForm>input{
+  background-color: rgb(223, 238, 252);
+  border-bottom: solid rgb(47, 47, 47) .5px;
+}
+.adminForm :nth-last-child(1){
+  width: 20%;
 }

@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HomePage from "./pages/HomePage";
 import Meeting from './pages/Meeting'
+import Admin from './pages/Admin'
 function App() {
   const [data, setData] = React.useState([]);
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path='/meeting' element={<Meeting />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
     </BrowserRouter>
     </div>
