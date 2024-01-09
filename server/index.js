@@ -84,12 +84,14 @@ app.post('/createTime',async(req,res)=>{
                   participators: req.body.participants,
                   title: req.body.title,
                   content: req.body.description,
-                  reserved: req.body.reserved == 'on'? 'true' : 'false'
+                  reserved: req.body.reserved == 'on' ? 'true' : 'false'
                 }
               })
+              res.redirect('/admin')
         }
     } catch (error) {
         console.log(error,'error')
+        res.redirect('/admin')
     }
 })
 app.listen(PORT, () => {
