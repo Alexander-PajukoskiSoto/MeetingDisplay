@@ -30,7 +30,7 @@ export default function Home() {
             <Header />
             <QR />
             {/* Check if weatherData.main is defined before accessing temp */}
-            <Weather weatherData={weatherData.main?.temp} weatherDescription={weatherData.weather[0]?.description} weatherIcon={weatherData.weather[0]?.icon} cityName={weatherData.name} />
+            <Weather weatherData={weatherData.main?.temp} weatherDescription={weatherData.weather && weatherData.weather[0]?.description} weatherIcon={weatherData.weather && weatherData.weather[0]?.icon} cityName={weatherData.name} />
         </div>
     );
 }
