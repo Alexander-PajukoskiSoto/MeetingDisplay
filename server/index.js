@@ -6,15 +6,29 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
 
+const prisma = new PrismaClient();
+
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+
+const loginTime = 1000 * 60 * 20;
+
+app.use(session({
+    secret: 'some secret',
+    cookie: {maxAge: loginTime},
+    saveUninitialized: false,
+    resave: false
+  }))
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use(express.static(path.resolve(__dirname,'../client/build')));
 
 console.log('express listening')
 
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat=59.2293827&lon=17.9748815&units=metric&appid=${process.env.KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=59.2293827&lon=17.9748815&units=metric&appid=cfdeb26907457c26a1360e06821fc8b8`)
 //converts to json
 .then(weathRes => weathRes.json())
 //runs function with data from API
@@ -36,7 +50,18 @@ app.get('/weatherApiTemp', async (req, res) => {
     }
   });
 
-app.get('/login')
+app.post('/login', async(req,res)=>{
+    console.log(req.body.name)
+    let adminUser = await prisma.AdminUser.findFirst({
+        where:{
+        OR:[{eMail: req.body.name}]
+        }
+    })
+    console.log(adminUser);
+    if(adminUser.password == req.body.password){
+        res.redirect('/admin')
+    }
+})
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

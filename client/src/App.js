@@ -23,6 +23,7 @@ function App() {
         <Route path='/meeting' element={<Meeting />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/login' element={<Login />} />
+        <Route path='*' element={<HomePage />} />
       </Routes>
     </BrowserRouter>
     </div>
