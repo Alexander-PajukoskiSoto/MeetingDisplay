@@ -52,15 +52,27 @@ app.get('/weatherApiTemp', async (req, res) => {
 
 app.post('/login', async(req,res)=>{
     console.log(req.body.name)
-    let adminUser = await prisma.AdminUser.findFirst({
-        where:{
-        OR:[{eMail: req.body.name}]
+    try {
+        let adminUser = await prisma.AdminUser.findFirst({
+            where:{
+                eMail: req.body.name
+            }
+        })
+        console.log(adminUser);
+        if(adminUser.password == req.body.password){
+            req.session.authenticated = "true";
+            console.log(req.session);
+            res.redirect('/admin');
         }
-    })
-    console.log(adminUser);
-    if(adminUser.password == req.body.password){
-        res.redirect('/admin')
-    }
+        else(
+            res.redirect('/login')
+        )
+        } catch (error) {
+            console.log(error)
+            res.redirect('/login')
+        }
+    
+    
 })
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
