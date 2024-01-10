@@ -46,6 +46,14 @@ app.get('/api',async(req,res)=>{
         }
     
 })
+app.get('/sessionApi',async(req,res)=>{
+    try {
+        res.json(!req.session.authenticated ? 'false':'true')
+        } catch (error) {
+            console.log(error)
+        }
+    
+})
 app.get('/weatherApiTemp', async (req, res) => {
     try {
       res.json(currentWeather);
@@ -66,6 +74,7 @@ app.post('/login', async(req,res)=>{
         if(adminUser.password == req.body.password){
             req.session.authenticated = "true";
             res.redirect('/admin');
+            console.log(req.session)
         }
         else(
             res.redirect('/login')

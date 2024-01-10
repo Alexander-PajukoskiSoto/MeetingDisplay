@@ -113,3 +113,35 @@ p, label{
 #reservedLable{
   display: inline;
 }
+
+/* Meeting */
+
+.timeChoices{
+  background-color: rgb(12, 13, 19);
+  border-radius: 2px;
+  width: 32%;
+  margin: 2px;
+  color: rgb(23, 28, 41);
+  padding: 2px;
+  color: rgb(239, 242, 246);
+}
+.timeChoiceDiv{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.meetingContentDiv{
+  display: none;
+}
+
+.descriptionDiv, .chooseTitle{
+  background-color: rgb(48, 53, 56);
+}
+
+/* Extras if needed */
+.hidden{
+  display: none;
+}
+.shown{
+  display: block;
+}
