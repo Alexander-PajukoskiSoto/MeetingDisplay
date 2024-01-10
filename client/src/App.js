@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HomePage from "./pages/HomePage";
 import Meeting from './pages/Meeting'
@@ -19,15 +19,15 @@ function App() {
       .then((res) => res.json())
       .then((sessionData) => setSessionData(sessionData))
   }, []);
-console.log(data)
+
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
         <Route index element={<HomePage />} />
         <Route path='/meeting' element={<Meeting meetingData={data}/>} />
-        <Route path='/admin' element={sessionData != 'true'   ? <Login /> :<Admin />} />
-        <Route path='/login' element={sessionData == 'true'   ? <Admin /> :<Login />} />
+        <Route path='/admin' element={sessionData !== 'true'   ? <Login /> :<Admin />} />
+        <Route path='/login' element={sessionData === 'true'   ? <Admin /> :<Login />} />
         <Route path='*' element={<HomePage />} />
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,6 @@
-import React,{useState, useEffect} from "react";
-import Header from '../components/Header';
+import React,{ useEffect} from "react";
 
-
-export default function Meeting({}){
+export default function Meeting(){
     const [data, setData] = React.useState([]);
     const [startDate, setStartDate] = React.useState([]);
     const [endDate, setEndDate] = React.useState([]);
@@ -19,7 +17,7 @@ useEffect(() => {
             <h1 className="availableMeetings">Available meetings</h1>
             <div className="timeChoiceDiv">
                 {data.map((element, index) => (
-                <div className={`timeChoices ${data[index].reserved == 'true' ? 'hidden' : 'shown'}`} key={index} onClick={()=>{
+                <div className={`timeChoices ${data[index].reserved === 'true' ? 'hidden' : 'shown'}`} key={index} onClick={()=>{
                     setStartDate(data[index].startDate)
                     setEndDate(data[index].endDate)
                 }}>

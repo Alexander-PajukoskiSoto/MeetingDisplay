@@ -1,12 +1,11 @@
 import React from "react";
-import { ReactDOM } from "react-dom";
 import bond from '../images/bond.png'
 
 export default function Header(){
     return(
         <div className="header">
             <div>
-                <img src={bond} className="headerImg"/>
+                <img src={bond} className="headerImg" alt="bond"/>
             </div>
             <div>
                 <ul className="headerUl">

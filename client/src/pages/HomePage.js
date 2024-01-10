@@ -23,9 +23,6 @@ export default function Home() {
                 console.error("Error fetching weather data:", error);
             });
     }, []);
-
-    console.log("Current weatherData:", weatherData);
-
     return (
         <div className="homeContainer">
             <Header />

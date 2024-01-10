@@ -10,6 +10,7 @@ export default function Login(){
                 
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password"></input> <br/>
+                
                 <input type="submit"></input>
             </form>
         </div>

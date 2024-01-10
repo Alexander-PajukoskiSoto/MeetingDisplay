@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import moment from "moment";
 
 function getDate() {
@@ -7,20 +7,19 @@ function getDate() {
     const month = today.getMonth() + 1;
     const year = today.getFullYear();
     const date = today.getDate();
-    const week = today.get
     return `${year}-${month.toString().length > 1 ? `${month}` : `0${month}`}-${date}`;
   }
     const today = moment();
     const weekNumber = moment(moment(today), "MM-DD-YYYY").week();
 export default function Weather({weatherData, weatherDescription, cityName, weatherIcon}){
-    const [dateNow, setDateNow] = useState(getDate());
+    const [dateNow] = useState(getDate());
 
     return(
         <div className="weatherContainer">
             <div>
             <div className="weatherDiv">
                 <h4>{cityName}</h4>
-                <img width='60px' src={`https://openweathermap.org/img/wn/${weatherIcon}@4x.png`}></img>
+                <img width='60px' src={`https://openweathermap.org/img/wn/${weatherIcon}@4x.png`} alt="weatherIcon"></img>
                 <h2>{weatherData}</h2>
                 <small>{weatherDescription}</small>
             </div>

@@ -8,12 +8,11 @@ function getDate() {
     const date = today.getDate();
     const hours = today.getHours();
     const minutes = today.getMinutes();
-    const seconds = today.getSeconds();
     return `${year}-${month.toString().length > 1 ? `${month}` : `0${month}`}-${date}T${hours.toString().length > 1 ? `${hours}` : `0${hours}`}:${minutes.toString().length > 1 ? `${minutes}` : `0${minutes}`}`;
   }
 export default function Available(){
     const [data, setData] = useState([]);
-    const [dateNow, setDateNow] = useState(getDate());
+    const [dateNow] = useState(getDate());
 
     useEffect(() => {
         fetch("/api")//meeting data
@@ -24,7 +23,7 @@ export default function Available(){
     return(
         <div className='availableDiv'>
             {data.map((element, index) => (
-                <div className={`available ${data[index].reserved == 'true' ? 'red' : 'green'} ${dateNow >= data[index].startDate.toString() && dateNow <= data[index].endDate.toString() ? 'shown' : 'hidden'}`} key={index} onClick={()=>{
+                <div className={`available ${data[index].reserved === 'true' ? 'red' : 'green'} ${dateNow >= data[index].startDate.toString() && dateNow <= data[index].endDate.toString() ? 'shown' : 'hidden'}`} key={index} onClick={()=>{
                 }}>
                     <h4>
                         {`${dateNow} to 
