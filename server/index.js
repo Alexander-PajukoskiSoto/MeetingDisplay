@@ -130,7 +130,7 @@ app.post('/reserve', async(req,res)=>{
           reserved: 'true'
         },
       })
-      res.redirect('/')
+      res.redirect('/madeMeeting')
 })
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

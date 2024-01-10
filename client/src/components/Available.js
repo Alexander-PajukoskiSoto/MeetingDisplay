@@ -27,11 +27,8 @@ export default function Available(){
                 }}>
                     <h4>
                         {`${dateNow} to 
-                        ${element.endDate} Agenda:
+                        ${element.endDate} Meeting:
                         ${element.title}`}
-                    </h4>
-                    <h4 className="availableTitle">
-                        
                     </h4>
                 </div>
             ))}

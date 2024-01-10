@@ -8,6 +8,14 @@ body{
 p, label{
   color: white;
 }
+a{
+  padding: 20px;
+  background-color: black;
+  margin: 0 auto;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+}
 .homeContainer{
   height: 100dvh;
   display: flex;
@@ -155,7 +163,18 @@ p, label{
   text-align: center;
   color: white;
 }
+.available{
+  padding: 2px;
+  border-bottom: solid rgb(0, 0, 0) 2px;
+  border-radius: 20px;
+}
+/* made meeting */
 
+.madeMeetingDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Extras */
 .hidden{
   display: none;

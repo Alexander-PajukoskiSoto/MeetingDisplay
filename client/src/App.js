@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Meeting from './pages/Meeting'
 import Admin from './pages/Admin'
 import Login from "./pages/Login";
+import MadeMeeting from "./pages/MadeMeeting";
 function App() {
   const [data, setData] = React.useState({});
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/meeting' element={<Meeting meetingData={data}/>} />
         <Route path='/admin' element={sessionData !== 'true'   ? <Login /> :<Admin />} />
         <Route path='/login' element={sessionData === 'true'   ? <Admin /> :<Login />} />
+        <Route path='/madeMeeting' element={<MadeMeeting />} />
         <Route path='*' element={<HomePage />} />
       </Routes>
     </BrowserRouter>
