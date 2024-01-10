@@ -6,7 +6,7 @@ export default function Meeting({}){
     const [data, setData] = React.useState([]);
     const [startDate, setStartDate] = React.useState([]);
     const [endDate, setEndDate] = React.useState([]);
-    const [showState, setShowState] = React.useState('hidden');
+
 useEffect(() => {
   fetch("/api")//meeting data
     .then((res) => res.json())
@@ -16,18 +16,12 @@ useEffect(() => {
     console.log(data)
     return(
         <div>
-            <Header />
-            <h1>All the meetings</h1>
+            <h1 className="availableMeetings">Available meetings</h1>
             <div className="timeChoiceDiv">
                 {data.map((element, index) => (
-                <div className="timeChoices" key={index} onClick={()=>{
+                <div className={`timeChoices ${data[index].reserved == 'true' ? 'hidden' : 'shown'}`} key={index} onClick={()=>{
                     setStartDate(data[index].startDate)
                     setEndDate(data[index].endDate)
-                }}onMouseEnter={()=>{
-                    setShowState('shown')
-                }}
-                onMouseLeave={()=>{
-                    setShowState('hidden')
                 }}>
                     <h4>
                         {`${element.startDate} 
@@ -36,7 +30,7 @@ useEffect(() => {
                     <h4 className="chooseTitle">
                         {element.title}
                     </h4>
-                    <div className={`${showState} descriptionDiv`}>{element.content}</div>  
+                    <div className={` descriptionDiv`}>{element.content}</div>  
                 </div>
             ))}
             </div>
