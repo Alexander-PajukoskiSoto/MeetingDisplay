@@ -1,8 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import moment from "moment";
 
-
+function getDate() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    const week = today.get
+    return `${year}-${month.toString().length > 1 ? `${month}` : `0${month}`}-${date}`;
+  }
+    const today = moment();
+    const weekNumber = moment(moment(today), "MM-DD-YYYY").week();
 export default function Weather({weatherData, weatherDescription, cityName, weatherIcon}){
+    const [dateNow, setDateNow] = useState(getDate());
+
     return(
         <div className="weatherContainer">
             <div>
@@ -15,7 +27,7 @@ export default function Weather({weatherData, weatherDescription, cityName, weat
 
             </div>
             <div>
-                <p>January 8 2023 || week 2</p>
+                <p>{`${dateNow} Week ${weekNumber}`}</p>
             </div>
         </div>
     )

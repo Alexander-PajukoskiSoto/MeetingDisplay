@@ -9,6 +9,7 @@ p, label{
   color: white;
 }
 .homeContainer{
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,7 +29,7 @@ p, label{
 }
 .headerImg{
   border-radius: 200px;
-  width: 200px;
+  height: 90%;
 }
 .headerUl{
   display: flex;
@@ -49,13 +50,14 @@ p, label{
 }
 .QRContainer>div{
   width: 50%;
+  height: 30dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
 .QRImage{
-  width: 195px;
+  width: 20dvh;
   border-radius: 10px;
 }
 
@@ -73,8 +75,8 @@ p, label{
   justify-content: center;
 }
 .weatherDiv{
-  width: 200px;
-  height: 200px;
+  width: 20dvh;
+  height: 25dvh;
   background-color: rgb(223, 238, 252);
   border-radius: 20px;
   display: flex;
@@ -146,11 +148,22 @@ p, label{
 .chooseTitle{
   background-color: rgb(25, 28, 29);
 }
-.availableMeetings{
-text-align: center;
+
+/* available */
+
+.availableDiv{
+  text-align: center;
+  color: white;
 }
 
-/* Extras if needed */
+/* Extras */
 .hidden{
   display: none;
+}
+
+.red{
+  background-color: red;
+}
+.green{
+  background-color: green;
 }

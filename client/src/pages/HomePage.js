@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from '../components/Header';
 import QR from '../components/QR'
 import Weather from "../components/Weather";
+import Available from "../components/Available";
 
 export default function Home() {
     const [weatherData, setWeatherData] = useState({});
@@ -29,8 +30,8 @@ export default function Home() {
         <div className="homeContainer">
             <Header />
             <QR />
-            {/* Check if weatherData.main is defined before accessing temp */}
             <Weather weatherData={weatherData.main?.temp} weatherDescription={weatherData.weather && weatherData.weather[0]?.description} weatherIcon={weatherData.weather && weatherData.weather[0]?.icon} cityName={weatherData.name} />
+            <Available />
         </div>
     );
 }
