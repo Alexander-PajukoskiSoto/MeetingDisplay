@@ -106,6 +106,32 @@ app.post('/createTime',async(req,res)=>{
         res.redirect('/login')
     }
 })
+
+app.post('/reserve', async(req,res)=>{
+    console.log(req.body)
+    const meetings = await prisma.Meetings.findFirst({
+        where: {
+            startDate: req.body.startDate,
+            AND: {
+              endDate: req.body.endDate
+            }
+}})
+
+    const reserve = await prisma.Meetings.update({
+        where: {
+            id: meetings.id
+        },
+        data: {
+          startDate: req.body.startDate,
+          endDate: req.body.endDate,
+          title: req.body.title,
+          participators: req.body.participants,
+          content: req.body.content,
+          reserved: 'true'
+        },
+      })
+      res.redirect('/')
+})
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

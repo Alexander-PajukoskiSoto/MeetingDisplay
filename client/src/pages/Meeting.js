@@ -39,19 +39,19 @@ useEffect(() => {
                     <div className={`${showState} descriptionDiv`}>{element.content}</div>  
                 </div>
             ))}
-            </div><br/>
-        <form action='/reserve' method="post">
-            <label htmlFor="startDate">Please click on a time that fits you</label><br/>
+            </div>
+        <form action='/reserve' method="post" className="adminForm">
+            <label htmlFor="startDate">Please click on a time that fits you</label>
             <input type="text" name="startDate" id="startDate"value={startDate} placeholder="start-time" readOnly />
-            <input type="text" name="endDate" id="endDate"value={endDate} placeholder="end-time" readOnly /> <br/><br/>
+            <input type="text" name="endDate" id="endDate"value={endDate} placeholder="end-time" readOnly />
 
-            <label htmlFor="participants">participants</label><br/>
-            <input type="text" name="participants" id="participants" placeholder="participants"/><br/><br/>
+            <label htmlFor="participants">participants</label>
+            <input type="text" name="participants" id="participants" placeholder="participants"/>
 
-            <label htmlFor="title">title</label><br/>
-            <input type="text" name="title" id="title" placeholder="title"/><br/><br/>
+            <label htmlFor="title">title</label>
+            <input type="text" name="title" id="title" placeholder="title"/>
 
-            <label htmlFor="content">description</label><br/>
+            <label htmlFor="content">description</label>
             <input type="text" name="content" id="content" placeholder="description"/>
 
            
