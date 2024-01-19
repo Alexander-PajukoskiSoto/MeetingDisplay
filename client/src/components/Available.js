@@ -1,6 +1,8 @@
 
 import {React, useState, useEffect} from 'react';
 
+
+// Gets the current date and makes a string out of it
 function getDate() {
     const today = new Date();
     const month = today.getMonth() + 1;
